@@ -1,0 +1,55 @@
+<div class="outer-wrapper">
+    <div class="accordion">
+      <% @data.keys.sort.each do |env_name| %>
+            <div class="cell">
+                <%= env_name %>
+            </div>
+      <% end %>
+    </div>
+    <div class="inner-wrapper">
+      <div id="header">
+        <h1>playfields</h1>
+      </div>
+      <div id="content">
+        <% @data.sort.to_h.each do |env_name, env_data| %>
+            <div class="env-name" id="<%= env_name %>"><%= env_name %></div>
+            <% env_data.each do |component, component_info| %>
+                <div class="row">
+                    <div class="content-left cell"><%= component %></div>
+                    <div class="content-center cell">
+                      <div>
+                        <span>URL: </span><a href="<%= component_info[:last_build][:url] %>">
+                          <%= component_info[:last_build][:url] %></a>
+                      </div>
+                      <div><span>Branch: </span><%= component_info[:last_build][:params]['branch'] %></div>
+                      <div><span>Timestamp: </span><%= component_info[:last_build][:timestamp].localtime %></div>
+                      <% component_info[:last_build][:causes].each do |cause| %>
+                        <div><%= cause['causes'][0]['shortDescription'] %></div>
+                      <% end %>
+                      <div>
+                          <span>Build result: </span><%= component_info[:last_build][:result] %>
+                      </div>
+                      <div><span>Duration: </span><%= component_info[:last_build][:duration] / 1000 %> sec</div>
+                    </div>
+                    <div class="content-right cell">
+                      <ul>
+                        <% if component_info[:builds].any? %>
+                            <% component_info[:builds][0...5].each do |build| %>
+                                <li>
+                                  <a href="<%= build.url %>">
+                                    <%= build.url %>
+                                  </a>
+                                </li>
+                            <% end %>
+                        <% else %>
+                            No previous builds.
+                        <% end %>
+                      </ul>
+                    </div>
+                </div>
+            <% end %>
+         <% end %>
+      </div>
+    </div>
+    <div class="back cell">back to top</div>
+</div>

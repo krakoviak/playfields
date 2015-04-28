@@ -1,0 +1,160 @@
+body {
+    font-family: helvetica, verdana, arial, sans-serif;
+    font-size: 12px;
+    background-color: #FFFEA9;
+}
+
+.inner-wrapper {
+    width: 900px;
+    margin: 0 auto;
+    border: 3px solid #bbb;
+    padding: 10px;
+    background-color: #94E305;
+    float: left;
+}
+
+#header {
+    border: 3px solid #bbb;
+    padding: 10px;
+    vertical-align: middle;
+    background-color: #EDA205;
+    margin-bottom: 15px;
+}
+
+#content {
+    margin-top: 10px;
+    padding-bottom: 120px;
+}
+
+div.cell {
+    border: 1px solid #bbb;
+}
+
+#content div.cell {
+    float: left;
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.content-left {
+    width: 70px;
+    background-color: #1B4CCF;
+    color: rgb(232, 230, 230);
+    text-align: center;
+}
+
+.content-center {
+    margin-left: 10px;
+    width: 390px;
+    background-color: #2F4FA8;
+    color: rgb(231, 231, 231);
+}
+
+.content-right {
+    margin-left: 10px;
+    width: 354px;
+    background-color: #5980EB;
+}
+
+#accordion {
+    float: left;
+    width: 878px;
+    border: 3px solid #bbb;
+    padding: 10px;
+    vertical-align: middle;
+    background-color: #EDA205;
+    margin-bottom: 15px;
+}
+
+#bottom {
+    clear: both;
+    text-align: right;
+}
+
+.env-name {
+    border: 3px solid #bbb;
+    height: 20px;
+    padding: 10px;
+    background-color: #FFC64D;
+    clear: both;
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+li {
+    list-style: none;
+}
+
+.content-center a:link {
+    color: rgb(231, 231, 231);
+}
+
+.content-center a:visited {
+    color: #979797;
+}
+
+.content-right a:link {
+    color: rgb(6, 7, 27);
+}
+
+.content-right a:visited {
+    color: #8E8E8E;
+}
+
+.row {
+    clear: both;
+}
+
+.inner-wrapper, #header, .env-name, .cell {
+    border-radius: 10px;
+}
+
+.cell span {
+    color: #FFC64D;
+}
+
+.accordion {
+    top: 100px;
+    /*margin-top: 120px;*/
+    float: left;
+    /*position: relative;*/
+    /*left: 500px;*/
+}
+
+.outer-wrapper {
+    width: 1100px;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+
+.accordion .cell {
+    margin-right: 3px;
+    margin-bottom: 3px;
+    padding: 3px;
+    background-color: #6DC2FF;
+    text-align: center;
+    font-size: 1.1em;
+    border: 3px solid #bbb;
+    color: white;
+}
+
+.accordion .cell:hover {
+    background-color: #748fff;
+    cursor: pointer;
+}
+
+.back {
+    display: none;
+    position: fixed;
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+    background-color: red;
+    color: white;
+}
+
+.back:hover {
+    background-color: #960000;
+    cursor: pointer;
+}

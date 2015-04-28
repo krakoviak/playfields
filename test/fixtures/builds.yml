@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parameters: MyText
+  causes: MyText
+  duration: 1
+  result: MyString
+  timestamp: 2015-04-16 18:26:46
+  url: MyString
+  env_id: 
+
+two:
+  parameters: MyText
+  causes: MyText
+  duration: 1
+  result: MyString
+  timestamp: 2015-04-16 18:26:46
+  url: MyString
+  env_id: 
