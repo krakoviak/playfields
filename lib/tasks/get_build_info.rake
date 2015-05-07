@@ -1,6 +1,6 @@
 require 'unirest'
 
-task :get_build_info_disabled => [:environment] do
+task :get_build_info => [:environment] do
   IGNORED = %w(all.apigw.qa.local
              all.apisearch.qa.local
              all.bob.qa.local
