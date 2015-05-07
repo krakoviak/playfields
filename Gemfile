@@ -31,6 +31,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'capistrano', '~> 3.4.0'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+gem 'capistrano-rvm', github: "capistrano/rvm"
 
 gem 'unirest'
 gem 'whenever', :require => false
