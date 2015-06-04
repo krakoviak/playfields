@@ -54,32 +54,35 @@ task :get_build_info => [:environment] do
         break
       end
 
-      actions = build_data['actions']
-      parameters = actions.select { |a| a.include?('parameters') }[0]['parameters']
-
-      tmp_params = {}
-      parameters.each do |p|
-        if p['name'].include?('branch') || p['name'].include?('version')
-          tmp_params['branch'] = p['value']
-        elsif p['name'].downcase.include?('node')
-          # ignore and do nothing
-        else
-          tmp_params[p['name']] = p['value']
-        end
-      end
-
-      causes = actions.select { |a| a.include?('causes') }
-
-      duration = build_data['duration']
       result = build_data['result']
-      timestamp = Time.at((build_data['timestamp'] / 1000).floor)
 
-      env = Env.find_or_create_by(name: env_name)
+      unless result.nil?
+        actions = build_data['actions']
+        parameters = actions.select { |a| a.include?('parameters') }[0]['parameters']
 
-      Build.find_or_create_by(parameters: tmp_params.to_s, causes: causes.to_s, duration: duration, result: result,
-          timestamp: timestamp, url: url, env_id: env.id, number: number, country: country, component: component_name)
+        tmp_params = {}
+        parameters.each do |p|
+          if p['name'].include?('branch') || p['name'].include?('version')
+            tmp_params['branch'] = p['value']
+          elsif p['name'].downcase.include?('node')
+            # ignore and do nothing
+          else
+            tmp_params[p['name']] = p['value']
+          end
+        end
+        causes = actions.select { |a| a.include?('causes') }
+        duration = build_data['duration']
+        timestamp = Time.at((build_data['timestamp'] / 1000).floor)
 
-      build_count += 1
+        env = Env.find_or_create_by(name: env_name)
+
+        Build.find_or_create_by(parameters: tmp_params.to_s, causes: causes.to_s, duration: duration, result: result,
+            timestamp: timestamp, url: url, env_id: env.id, number: number, country: country, component: component_name)
+
+        build_count += 1
+      else
+        puts "Skipping in-progress build for #{component_name}#{" #{country}" if country}."
+      end
 
     end
     import_result["#{component_name}#{" #{country}" if country}"] = build_count
