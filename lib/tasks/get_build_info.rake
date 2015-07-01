@@ -7,7 +7,7 @@ task :get_build_info => [:environment] do
              all.delivery.qa.local
              all.madmin.qa.local
              all.qa.local)
-  BASE_URL = 'http://jenkins.qa.local/view/STAND/api/json/'
+  BASE_URL = 'http://autotest:qwerty@jenkins.qa.local/view/STAND/api/json/'
 
   ignored_pattern = "(#{IGNORED.join('|')})"
 
