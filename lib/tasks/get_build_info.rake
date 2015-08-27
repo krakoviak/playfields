@@ -12,8 +12,9 @@ task :get_build_info => [:environment] do
   ignored_pattern = "(#{IGNORED.join('|')})"
 
   def get(url)
-    json_suffix = 'api/json'
-    Unirest.get(url + json_suffix, auth:{:user=>'autotest', :password=>'qwerty'}).body  
+    url += 'api/json'
+    Unirest.timeout(30)
+    Unirest.get(url, auth:{:user=>'autotest', :password=>'qwerty'}).body
   end
 
   puts "Build import from Jenkins started at #{Time.now}."
